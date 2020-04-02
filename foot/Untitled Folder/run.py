@@ -140,5 +140,7 @@ import keras
 import tensorflow as tf
 optimizer = keras.optimizers.Adam(lr=0.5e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(loss=custom_loss, optimizer=optimizer)
-model.fit(x_sample, y_sample,epochs=50,batch_size=64)
-model.save('my_model.h5')
+for i in range(1,10):
+    model.load_weights(str(i-1)+'my_model.h5')
+    model.fit(x_sample, y_sample,epochs=50,batch_size=64)
+    model.save(str(i)+'my_model.h5')
