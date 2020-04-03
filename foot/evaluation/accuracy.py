@@ -166,8 +166,8 @@ if __name__ == '__main__':
     iou_threshold = 0.5
 
     for idx,row_obj in lr_df.iterrows():
-        if idx > 100:
-            continue
+        #if idx > 100:
+        #    continue
         print(idx)        
 
         if row_obj.filename not in images_in_dir:
@@ -219,7 +219,7 @@ if __name__ == '__main__':
 
             _, iou_l = bb_intersection_over_union([row_obj.lxmin,row_obj.lymin, row_obj.lxmax, row_obj.lymax], [xminl,yminl,xmaxl,ymaxl])
             
-            print("iou_l: ", iou_l)          
+            #print("iou_l: ", iou_l)          
 
             if(iou_l > iou_threshold):
                 count_right+=1
@@ -234,7 +234,7 @@ if __name__ == '__main__':
             # print("rpred: ",xminr,yminr,xmaxr,ymaxr)
             _, iou_r = bb_intersection_over_union([row_obj.rxmin,row_obj.rymin, row_obj.rxmax, row_obj.rymax], [xminr,yminr,xmaxr,ymaxr])  
             
-            print("iou_r: ", iou_r)          
+            #print("iou_r: ", iou_r)          
             
             if(iou_r > iou_threshold):
                 count_right += 1

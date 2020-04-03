@@ -8,6 +8,7 @@ from PIL import Image
 import cv2
 import urllib.request 
 import numpy 
+import pandas as pd
 
 def _make_divisible(v, divisor, min_value=None):
     if min_value is None:
@@ -129,6 +130,9 @@ def custom_loss(ytrue, ypred):
 if __name__ == '__main__':
     model = MobileNetv2((224, 224, 3), 1+1+4+4, 1.0)
     model.load_weights('4my_model.h5')
+    
+    lr_df = pd.read_csv("lr_foot.csv")
+    
     
     url = "https://newvalues.s3-us-west-1.amazonaws.com/IMG_3433.JPG"
 
