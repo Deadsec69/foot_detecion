@@ -185,9 +185,9 @@ if __name__ == '__main__':
 
         pred_arr = model.predict(img_224)
 
-        lpred_prob = 1/(1 + np.exp(pred_arr[0][0])) > 0        
-        rpred_prob = 1/(1 + np.exp(pred_arr[0][1])) > 0
-
+        lpred_prob = 1/(1 + np.exp(-pred_arr[0][0])) > 0.5        
+        rpred_prob = 1/(1 + np.exp(-pred_arr[0][1])) > 0.5
+        #print(lpred_prob, rpred_prob, pred_arr[0][0], pred_arr[0][1])
         lactual_prob = row_obj.lxmin and row_obj.lymin and row_obj.lxmax and row_obj.lymax
         ractual_prob = row_obj.rxmin and row_obj.rymin and row_obj.rxmax and row_obj.rymax
 
